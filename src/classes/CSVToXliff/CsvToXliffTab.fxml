@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.cathive.fonts.fontawesome.FontAwesomeIconView?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="428.0" style="-fx-background-color: #3c2a37;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.CSVToXliff.CsvToXliffController">
+   <children>
+      <Pane fx:id="infoPane" onMouseClicked="#sendInfoToBackground" prefHeight="820.0" prefWidth="428.0">
+         <children>
+            <Label onMouseClicked="#sendInfoToBackground" prefHeight="820.0" prefWidth="428.0" style="-fx-background-color: ffffff; -fx-opacity: 0.2;" />
+            <Pane layoutX="28.0" layoutY="74.0" onMouseClicked="#sendInfoToBackground" prefHeight="681.0" prefWidth="373.0" style="-fx-background-color: ffffff; -fx-border-radius: 15; -fx-background-radius: 25; -fx-border-color: #000000; -fx-border-width: 3;">
+               <children>
+                  <Label layoutX="124.0" layoutY="14.0" text="Instructions">
+                     <font>
+                        <Font name="Verdana Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextArea editable="false" layoutX="7.0" layoutY="51.0" onMouseClicked="#sendInfoToBackground" prefHeight="616.0" prefWidth="358.0" stylesheets="@../../StyleSheets/mainStyleSheet.css" text="This tool will import one column of a CSV file into an Xcode formatted Xliff file. Each string will be added under a &quot;target&quot; header in each &quot;trans-unit&quot; of the Xliff in the following structure:&#10;&#10;&lt;trans-unit&gt;&#10;    &lt;source&gt; string to be translated &lt;/source&gt;&#10;    &lt;note&gt; note for translator &lt;/note&gt;&#10;    &lt;target&gt; translated string &lt;/target&gt;&#10;&lt;/trans-unit&gt;&#10;&#10;Instructions:&#10;&#10;1. Select the CSV to use for importing&#10;&#10;2. Select the delimiter type&#10;&#10;3. Select an xliff to use as a foundation. &#10;&#10;NOTE: It is extremely important that the strings placements match exactly between the CSV and base Xliff, otherwise the source and target of each translation unit will not match.&#10;&#10;4. Select a column to extract as target strings for the Xliff file. &#10;&#10;5. Select an export directory. &#10;&#10;6. Click convert. " wrapText="true">
+                     <font>
+                        <Font name="Verdana" size="14.0" />
+                     </font>
+                  </TextArea>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Label prefHeight="820.0" prefWidth="428.0" style="-fx-background-color: #3c2a37#3c2a37;" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="72.0" layoutY="20.0" prefHeight="45.0" prefWidth="284.0" text="CSV to Xliff" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="20.0" />
+         </font>
+      </Label>
+      <Pane layoutX="14.0" layoutY="140.0" prefHeight="109.0" prefWidth="400.0">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Import CSV" textFill="WHITE">
+               <font>
+                  <Font name="Verdana Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="importCsvFilePathLabel" layoutX="14.0" layoutY="49.0" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #5a3f52#5a3f52; -fx-background-radius: 10;" textFill="WHITE">
+               <font>
+                  <Font name="Verdana Italic" size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="selectCsvButton" layoutX="331.0" layoutY="49.0" onAction="#handleImportCsvButton" prefHeight="45.0" prefWidth="55.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: #875e7b#875e7b;" />
+            <FontAwesomeIconView fx:id="importCsvIcon" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" icon="ICON_FOLDER_OPEN_ALT" layoutX="338.0" layoutY="53.0" prefHeight="38.0" prefWidth="41.0" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </FontAwesomeIconView>
+         </children>
+      </Pane>
+      <Pane layoutX="14.0" layoutY="521.0" prefHeight="109.0" prefWidth="400.0">
+         <children>
+            <JFXComboBox fx:id="selectCsvColumnComboBox" layoutX="14.0" layoutY="50.0" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #5a3f52#5a3f52 #5a3f52#5a3f52; -fx-background-radius: 10;" />
+            <Label layoutX="14.0" layoutY="14.0" text="Select Column for Xliff Targets" textFill="WHITE">
+               <font>
+                  <Font name="Verdana Bold" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="14.0" layoutY="630.0" prefHeight="109.0" prefWidth="400.0">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Export Directory" textFill="WHITE">
+               <font>
+                  <Font name="Verdana Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="exportFilePathLabel" layoutX="14.0" layoutY="45.0" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #5a3f52#5a3f52 #5a3f52#5a3f52; -fx-background-radius: 10;" textFill="WHITE">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font name="Verdana Italic" size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="selectExportDirectoryButton" layoutX="331.0" layoutY="45.0" onAction="#handleExportDirectoryButton" prefHeight="45.0" prefWidth="55.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: #875e7b#875e7b;" />
+            <FontAwesomeIconView fx:id="exportIcon" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" icon="ICON_FOLDER_OPEN_ALT" layoutX="338.0" layoutY="49.0" prefHeight="38.0" prefWidth="41.0" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </FontAwesomeIconView>
+         </children>
+      </Pane>
+      <Pane layoutX="14.0" layoutY="412.0" prefHeight="109.0" prefWidth="400.0">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Select Base Xliff" textFill="WHITE">
+               <font>
+                  <Font name="Verdana Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="baseXliffFilePathLabel" layoutX="14.0" layoutY="49.0" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #5a3f52#5a3f52; -fx-background-radius: 10;" textFill="WHITE">
+               <font>
+                  <Font name="Verdana Italic" size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="selectXliffButton" layoutX="331.0" layoutY="49.0" onAction="#handleImportBaseXliffButton" prefHeight="45.0" prefWidth="55.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: #875e7b#875e7b;" />
+            <FontAwesomeIconView fx:id="importBaseXliffIcon" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" icon="ICON_FOLDER_OPEN_ALT" layoutX="338.0" layoutY="53.0" prefHeight="38.0" prefWidth="41.0" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </FontAwesomeIconView>
+         </children>
+      </Pane>
+      <Pane layoutX="14.0" layoutY="249.0" prefHeight="163.0" prefWidth="400.0">
+         <children>
+            <JFXToggleButton fx:id="commasToggle" alignment="CENTER_LEFT" contentDisplay="RIGHT" graphicTextGap="69.0" layoutX="58.0" layoutY="14.0" onAction="#handleDelimiterToggles" prefHeight="62.0" prefWidth="284.0" text="Comma Delimiters" textFill="WHITE" toggleColor="#f5905c" toggleLineColor="#f5cb5d">
+               <font>
+                  <Font name="Verdana Bold" size="14.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="delimiters1" />
+               </toggleGroup>
+            </JFXToggleButton>
+            <JFXToggleButton fx:id="semiColonsToggle" alignment="CENTER_LEFT" contentDisplay="RIGHT" graphicTextGap="40.0" layoutX="58.0" layoutY="85.0" onAction="#handleDelimiterToggles" prefHeight="0.0" prefWidth="284.0" text="Semi-colon Delimiters" textFill="WHITE" toggleColor="#f5905c" toggleGroup="$delimiters1" toggleLineColor="#f5cb5d">
+               <font>
+                  <Font name="Verdana Bold" size="14.0" />
+               </font>
+            </JFXToggleButton>
+         </children>
+      </Pane>
+      <JFXButton fx:id="convertButton" buttonType="RAISED" layoutX="101.0" layoutY="747.0" onAction="#handleConvertButton" prefHeight="45.0" prefWidth="227.0" ripplerFill="#d0d0d0" style="-fx-background-color: #f5905c#f5905c; -fx-background-radius: 30;" text="Convert" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="28.0" layoutY="69.0" lineSpacing="1.0" prefHeight="71.0" prefWidth="374.0" text="* This tool will add/modify &quot;target&quot; tags in an existing Xliff file, and therefore requires a CSV and Xliff &quot;pair&quot;, where object ID's match directly. Import your CSV and select the column containing the strings you wish to add into your Xliff. " textAlignment="CENTER" textFill="#ebebeb" textOverrun="CLIP" wrapText="true">
+         <font>
+            <Font name="Verdana" size="12.0" />
+         </font>
+      </Label>
+      <Pane layoutX="369.0" layoutY="27.0" prefHeight="31.0" prefWidth="33.0">
+         <children>
+            <JFXButton fx:id="infoButton" onAction="#handleInfoButton" prefHeight="30.0" prefWidth="31.0" style="-fx-opacity: 0;" />
+            <FontAwesomeIconView fx:id="infoIcon" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" icon="ICON_QUESTION_SIGN" prefHeight="30.0" prefWidth="31.0" style="-fx-background-color: ffffff; -fx-background-radius: 15;" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </FontAwesomeIconView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

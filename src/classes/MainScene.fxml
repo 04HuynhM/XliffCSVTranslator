@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="stackPane" maxHeight="820.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="427.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.Main">
+   <children>
+      <JFXTabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="820.0" prefWidth="428.0" stylesheets="@../StyleSheets/mainStyleSheet.css" tabMaxWidth="214.0" tabMinWidth="100.0">
+         <tabs>
+            <Tab text="Xliff to CSV">
+              <fx:include source="XliffToCSV/XliffToCsvTab.fxml" fx:id="xliffToCsvContainer" />
+            </Tab>
+            <Tab text="CSV to Xliff">
+              <fx:include fx:id="csvToXliffContainer" source="CSVToXliff/CsvToXliffTab.fxml" />
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+   </children>
+</StackPane>

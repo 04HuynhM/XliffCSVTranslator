@@ -1,0 +1,29 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.walterjwhite.infrastructure</groupId>
+        <artifactId>dependencies</artifactId>
+        <version>0.0.15-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.walterjwhite.infrastructure.dependencies</groupId>
+    <artifactId>slf4j-simple</artifactId>
+
+    <packaging>pom</packaging>
+
+    <name>slf4j-simple</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j-simple.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <properties>
+        <slf4j-simple.version>1.7.25</slf4j-simple.version>
+    </properties>
+</project>
