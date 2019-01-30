@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_xlifftocsv" default="compile.module.xlifftocsv">
+  <dirname property="module.xlifftocsv.basedir" file="${ant.file.module_xlifftocsv}"/>
+  
+  <property name="module.jdk.home.xlifftocsv" value="${jdk.home.10}"/>
+  <property name="module.jdk.bin.xlifftocsv" value="${jdk.bin.10}"/>
+  <property name="module.jdk.classpath.xlifftocsv" value="jdk.classpath.10"/>
+  
+  <property name="compiler.args.xlifftocsv" value="-encoding UTF-8 -source 10 -target 10 ${compiler.args}"/>
+  
+  <property name="xlifftocsv.output.dir" value="${module.xlifftocsv.basedir}/out/production/XliffToCSV"/>
+  <property name="xlifftocsv.testoutput.dir" value="${module.xlifftocsv.basedir}/out/test/XliffToCSV"/>
+  
+  <path id="xlifftocsv.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="xlifftocsv.module.production.classpath">
+    <path refid="${module.jdk.classpath.xlifftocsv}"/>
+    <path refid="library.com.cathive.fonts:fonts-fontawesome:3.2.1.0.classpath"/>
+    <path refid="library.com.walterjwhite.modules.csv.modules:apache-commons-csv:0.0.15.classpath"/>
+    <path refid="library.com.jfoenix:jfoenix:9.0.8.classpath"/>
+    <path refid="library.javafx.classpath"/>
+    <path refid="library.com.intellij:javac2:7.0.3.classpath"/>
+  </path>
+  
+  <path id="xlifftocsv.runtime.production.module.classpath">
+    <pathelement location="${xlifftocsv.output.dir}"/>
+    <path refid="library.com.cathive.fonts:fonts-fontawesome:3.2.1.0.classpath"/>
+    <path refid="library.com.walterjwhite.modules.csv.modules:apache-commons-csv:0.0.15.classpath"/>
+    <path refid="library.com.jfoenix:jfoenix:9.0.8.classpath"/>
+    <path refid="library.javafx.classpath"/>
+    <path refid="library.com.intellij:javac2:7.0.3.classpath"/>
+  </path>
+  
+  <path id="xlifftocsv.module.classpath">
+    <path refid="${module.jdk.classpath.xlifftocsv}"/>
+    <pathelement location="${xlifftocsv.output.dir}"/>
+    <path refid="library.com.cathive.fonts:fonts-fontawesome:3.2.1.0.classpath"/>
+    <path refid="library.com.walterjwhite.modules.csv.modules:apache-commons-csv:0.0.15.classpath"/>
+    <path refid="library.com.jfoenix:jfoenix:9.0.8.classpath"/>
+    <path refid="library.javafx.classpath"/>
+    <path refid="library.com.intellij:javac2:7.0.3.classpath"/>
+  </path>
+  
+  <path id="xlifftocsv.runtime.module.classpath">
+    <pathelement location="${xlifftocsv.testoutput.dir}"/>
+    <pathelement location="${xlifftocsv.output.dir}"/>
+    <path refid="library.com.cathive.fonts:fonts-fontawesome:3.2.1.0.classpath"/>
+    <path refid="library.com.walterjwhite.modules.csv.modules:apache-commons-csv:0.0.15.classpath"/>
+    <path refid="library.com.jfoenix:jfoenix:9.0.8.classpath"/>
+    <path refid="library.javafx.classpath"/>
+    <path refid="library.com.intellij:javac2:7.0.3.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.xlifftocsv">
+    <patternset refid="ignored.files"/>
+    <exclude name="out/**"/>
+    <exclude name="out/artifacts/**"/>
+    <exclude name="out/production/**"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.xlifftocsv">
+    <patternset refid="excluded.from.module.xlifftocsv"/>
+  </patternset>
+  
+  <path id="xlifftocsv.module.sourcepath">
+    <dirset dir="${module.xlifftocsv.basedir}/../../Documents">
+      <include name="XliffToCSV/src"/>
+      <include name="XliffToCSV"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.xlifftocsv" depends="compile.module.xlifftocsv.production,compile.module.xlifftocsv.tests" description="Compile module XliffToCSV"/>
+  
+  <target name="compile.module.xlifftocsv.production" depends="register.custom.compilers" description="Compile module XliffToCSV; production classes">
+    <mkdir dir="${xlifftocsv.output.dir}"/>
+    <javac2 destdir="${xlifftocsv.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.xlifftocsv}/javac">
+      <compilerarg line="${compiler.args.xlifftocsv}"/>
+      <bootclasspath refid="xlifftocsv.module.bootclasspath"/>
+      <classpath refid="xlifftocsv.module.production.classpath"/>
+      <src refid="xlifftocsv.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.xlifftocsv"/>
+    </javac2>
+    
+    <copy todir="${xlifftocsv.output.dir}">
+      <fileset dir="${module.xlifftocsv.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.xlifftocsv.basedir}">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.xlifftocsv.tests" depends="register.custom.compilers,compile.module.xlifftocsv.production" description="compile module XliffToCSV; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.xlifftocsv" description="cleanup module">
+    <delete dir="${xlifftocsv.output.dir}"/>
+    <delete dir="${xlifftocsv.testoutput.dir}"/>
+  </target>
+</project>

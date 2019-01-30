@@ -6,11 +6,12 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="10" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="com.cathive.fonts:fonts-fontawesome:3.2.1.0" level="project" />
-    <orderEntry type="library" exported="" name="com.walterjwhite.modules.csv.modules:apache-commons-csv:0.0.15" level="project" />
-    <orderEntry type="library" exported="" name="com.jfoenix:jfoenix:9.0.8" level="project" />
+    <orderEntry type="library" name="com.cathive.fonts:fonts-fontawesome:3.2.1.0" level="project" />
+    <orderEntry type="library" name="com.walterjwhite.modules.csv.modules:apache-commons-csv:0.0.15" level="project" />
+    <orderEntry type="library" name="com.jfoenix:jfoenix:9.0.8" level="project" />
     <orderEntry type="library" name="JavaFX" level="project" />
+    <orderEntry type="library" name="com.intellij:javac2:7.0.3" level="project" />
   </component>
 </module>

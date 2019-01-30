@@ -1,0 +1,33 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="XliffToCSV">
+    <output-path>$PROJECT_DIR$/out/artifacts/XliffToCSV</output-path>
+    <properties id="ant-postprocessing">
+      <options enabled="true" />
+    </properties>
+    <properties id="ant-preprocessing">
+      <options enabled="true" />
+    </properties>
+    <properties id="javafx-properties">
+      <options>
+        <option name="alias" value="" />
+        <option name="appClass" value="classes.Main" />
+        <option name="description" value="" />
+        <option name="enabledSigning" value="true" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="keystore" value="" />
+        <option name="nativeBundle" value="dmg" />
+        <option name="title" value="XlifftoCSV" />
+        <option name="vendor" value="MHuynh" />
+        <option name="version" value="1.0" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="CSVtoXliff.jar">
+        <element id="module-output" name="XliffToCSV" />
+      </element>
+      <element id="library" level="project" name="com.cathive.fonts:fonts-fontawesome:3.2.1.0" />
+      <element id="library" level="project" name="com.walterjwhite.modules.csv.modules:apache-commons-csv:0.0.15" />
+      <element id="library" level="project" name="com.jfoenix:jfoenix:9.0.8" />
+    </root>
+  </artifact>
+</component>

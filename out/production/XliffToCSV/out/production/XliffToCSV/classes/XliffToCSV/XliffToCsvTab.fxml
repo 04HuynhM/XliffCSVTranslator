@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.cathive.fonts.fontawesome.FontAwesomeIconView?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="428.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.XliffToCSV.XliffToCsvController">
+   <children>
+      <Pane fx:id="infoPane" onMouseClicked="#sendInfoToBackground" prefHeight="820.0" prefWidth="428.0">
+         <children>
+            <Label prefHeight="820.0" prefWidth="428.0" style="-fx-background-color: ffffff; -fx-opacity: 0.2;" />
+            <Pane layoutX="28.0" layoutY="74.0" onMouseClicked="#sendInfoToBackground" prefHeight="681.0" prefWidth="373.0" style="-fx-background-color: ffffff; -fx-border-radius: 15; -fx-background-radius: 25; -fx-border-color: #000000; -fx-border-width: 3;">
+               <children>
+                  <Label layoutX="124.0" layoutY="14.0" text="Instructions">
+                     <font>
+                        <Font name="Verdana Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextArea editable="false" layoutX="7.0" layoutY="51.0" onMouseClicked="#sendInfoToBackground" prefHeight="616.0" prefWidth="358.0" stylesheets="@../../StyleSheets/mainStyleSheet.css" text="This tool will extract data from an Xliff file and create a CSV out of it. The Xliff must have been exported from Xcode or be in the following structure:&#10;&#10;&lt;trans-unit&gt;&#10;    &lt;source&gt; string to be translated &lt;/source&gt;&#10;    &lt;note&gt; note for translator &lt;/note&gt;&#10;    &lt;target&gt; translated string &lt;/target&gt; *&#10;&lt;/trans-unit&gt;&#10;&#10;* The target header is optional&#10;&#10;Instructions:&#10;&#10;1. Select your Xliff&#10;&#10;2. Configure your required CSV Parameters&#10;*Delimiters are characters that separate each value, they denote a switch in column.&#10;&#10;3. Enter your base language (source language) this will be added as a column heading in your CSV. &#10;&#10;4. If your Xliff already has translated (target) strings, enter the target language. This will be added as a column heading, and the translated strings will be exported into this column.&#10;&#10;5. Select a export directory. &#10;&#10;6. Click convert." wrapText="true">
+                     <font>
+                        <Font name="Verdana" size="14.0" />
+                     </font>
+                  </TextArea>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Label prefHeight="820.0" prefWidth="428.0" style="-fx-background-color: #465062 #465062;" />
+      <JFXButton fx:id="convertButton" buttonType="RAISED" layoutX="101.0" layoutY="747.0" onAction="#xliffToCsvHandleConvertButton" prefHeight="45.0" prefWidth="227.0" ripplerFill="#d0d0d0" style="-fx-background-color: #f5905c#f5905c; -fx-background-radius: 30;" text="Convert" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <Label alignment="CENTER" layoutX="72.0" layoutY="20.0" prefHeight="45.0" prefWidth="284.0" text="Xliff to CSV" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="20.0" />
+         </font>
+      </Label>
+      <Pane layoutX="15.0" layoutY="65.0" prefHeight="109.0" prefWidth="400.0">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Import Xliff" textFill="WHITE">
+               <font>
+                  <Font name="Verdana Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="filePathLabel" layoutX="14.0" layoutY="49.0" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #58657c#58657c; -fx-background-radius: 10;" textFill="WHITE">
+               <font>
+                  <Font name="Verdana Italic" size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="importButton" layoutX="331.0" layoutY="49.0" onAction="#xliffToCsvHandleImportButton" prefHeight="45.0" prefWidth="55.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: #a7bfee#a7bfee;" />
+            <FontAwesomeIconView fx:id="importIcon" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" icon="ICON_FOLDER_OPEN_ALT" layoutX="338.0" layoutY="53.0" prefHeight="38.0" prefWidth="41.0" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </FontAwesomeIconView>
+         </children>
+      </Pane>
+      <Pane layoutX="15.0" layoutY="181.0" prefHeight="128.0" prefWidth="400.0">
+         <children>
+            <JFXToggleButton fx:id="commasToggle" alignment="CENTER_LEFT" contentDisplay="RIGHT" graphicTextGap="69.0" layoutX="58.0" layoutY="2.0" onAction="#handleDelimiterToggles" prefHeight="62.0" prefWidth="284.0" text="Comma Delimiters" textFill="WHITE" toggleColor="#f5905c" toggleLineColor="#f5cb5d">
+               <font>
+                  <Font name="Verdana Bold" size="14.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="delimiters" />
+               </toggleGroup>
+            </JFXToggleButton>
+            <JFXToggleButton fx:id="semiColonsToggle" alignment="CENTER_LEFT" contentDisplay="RIGHT" graphicTextGap="40.0" layoutX="58.0" layoutY="62.0" onAction="#handleDelimiterToggles" prefHeight="0.0" prefWidth="284.0" text="Semi-colon Delimiters" textFill="WHITE" toggleColor="#f5905c" toggleGroup="$delimiters" toggleLineColor="#f5cb5d">
+               <font>
+                  <Font name="Verdana Bold" size="14.0" />
+               </font>
+            </JFXToggleButton>
+         </children>
+      </Pane>
+      <Label layoutX="34.0" layoutY="648.0" text="Export Directory" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="exportFilePathLabel" layoutX="32.0" layoutY="680.0" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #58657c#58657c; -fx-background-radius: 10;" textFill="WHITE">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <font>
+            <Font name="Verdana Italic" size="13.0" />
+         </font>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </Label>
+      <JFXButton fx:id="exportFilePathButton" layoutX="343.0" layoutY="681.0" onAction="#xliffToCsvHandleExportButton" prefHeight="45.0" prefWidth="55.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: #a7bfee#a7bfee;" />
+      <Label layoutX="32.0" layoutY="435.0" text="Base Language" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="baseLanguageTextField" layoutX="32.0" layoutY="472.0" prefHeight="45.0" prefWidth="300.0" promptText="e.g. en, sv_SE..." style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #58657c; -fx-text-fill: #FFFFFF;">
+         <font>
+            <Font name="Verdana Italic" size="13.0" />
+         </font>
+      </TextField>
+      <JFXToggleButton fx:id="quotedTextToggle" alignment="CENTER_LEFT" contentDisplay="RIGHT" graphicTextGap="117.0" layoutX="72.0" layoutY="300.0" onAction="#xliffToCsvHandleQuotedTextToggle" prefHeight="60.0" prefWidth="284.0" text="Quoted Text" textFill="WHITE" toggleColor="#f5905c" toggleLineColor="#f5cb5d">
+         <toggleGroup>
+            <ToggleGroup fx:id="delimiters1" />
+         </toggleGroup>
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font>
+      </JFXToggleButton>
+      <FontAwesomeIconView fx:id="exportIcon" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" icon="ICON_FOLDER_OPEN_ALT" layoutX="350.0" layoutY="685.0" prefHeight="38.0" prefWidth="41.0" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </FontAwesomeIconView>
+      <JFXToggleButton fx:id="containsTargetToggle" alignment="CENTER_LEFT" contentDisplay="RIGHT" graphicTextGap="52.0" layoutX="72.0" layoutY="360.0" onAction="#handleContainsTargetToggle" prefHeight="60.0" prefWidth="284.0" text="Xliff Contains Target" textFill="WHITE" toggleColor="#f5905c" toggleLineColor="#f5cb5d">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font>
+      </JFXToggleButton>
+      <Label fx:id="targetLanguageLabel" layoutX="32.0" layoutY="542.0" text="Target Language" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="targetLanguageTextField" layoutX="32.0" layoutY="579.0" prefHeight="45.0" prefWidth="300.0" promptText="e.g. en, sv_SE..." style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #58657c; -fx-text-fill: #FFFFFF;">
+         <font>
+            <Font name="Verdana Italic" size="13.0" />
+         </font>
+      </TextField>
+      <JFXButton fx:id="infoButton" layoutX="375.0" layoutY="28.0" onAction="#handleInfoButton" prefHeight="30.0" prefWidth="31.0" style="-fx-opacity: 0;" />
+      <FontAwesomeIconView fx:id="infoIcon" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" icon="ICON_QUESTION_SIGN" layoutX="375.0" layoutY="28.0" prefHeight="30.0" prefWidth="31.0" style="-fx-background-color: ffffff; -fx-background-radius: 15;" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </FontAwesomeIconView>
+   </children>
+</AnchorPane>

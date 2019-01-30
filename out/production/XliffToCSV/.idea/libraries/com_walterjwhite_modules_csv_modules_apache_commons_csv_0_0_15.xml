@@ -1,0 +1,27 @@
+<component name="libraryTable">
+  <library name="com.walterjwhite.modules.csv.modules:apache-commons-csv:0.0.15" type="repository">
+    <properties maven-id="com.walterjwhite.modules.csv.modules:apache-commons-csv:0.0.15" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/apache-commons-csv-0.0.15.jar!/" />
+      <root url="file://$PROJECT_DIR$/lib/commons-csv-0.0.15-SNAPSHOT.pom" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-csv-1.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/impl-0.0.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/core-0.0.15-SNAPSHOT.jar!/" />
+      <root url="file://$PROJECT_DIR$/lib/google-guice-0.0.15-SNAPSHOT.pom" />
+      <root url="jar://$PROJECT_DIR$/lib/guice-4.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.inject-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/aopalliance-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/guava-19.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/logging-0.0.15-SNAPSHOT.jar!/" />
+      <root url="file://$PROJECT_DIR$/lib/slf4j-api-0.0.15-SNAPSHOT.pom" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-api-1.7.25.jar!/" />
+      <root url="file://$PROJECT_DIR$/lib/slf4j-simple-0.0.15-SNAPSHOT.pom" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-simple-1.7.25.jar!/" />
+      <root url="file://$PROJECT_DIR$/lib/aspectjrt-0.0.15-SNAPSHOT.pom" />
+      <root url="jar://$PROJECT_DIR$/lib/aspectjrt-1.8.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/api-0.0.15.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

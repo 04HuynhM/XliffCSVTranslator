@@ -149,7 +149,7 @@ public class CsvToXliffController implements Initializable {
         infoPane.toBack();
     }
 
-    public void showRecordsInComboBox() {
+    private void showRecordsInComboBox() {
         try {
             FileReader fileReader = new FileReader(importCsvFilePathLabel.getText());
             BufferedReader bufferedReader = new BufferedReader(fileReader);//
@@ -191,19 +191,33 @@ public class CsvToXliffController implements Initializable {
         }
         else {
             try {
-                File baseXliff = new File(baseXliffFilePathLabel.getText());
+                File baseXliff = new File(baseXliffFilePathLabel.getText() + ".xliff");
                 int selectedColumn = selectCsvColumnComboBox.getSelectionModel().getSelectedIndex();
 
                 DocumentBuilder builder = factory.newDocumentBuilder();
                 Document document = builder.parse(baseXliff);
                 document.getDocumentElement().normalize();
 
+                NodeList listOfFiles = document.getElementsByTagName("file");
+
+                for(int i = 0; i < listOfFiles.getLength(); i++) {
+                    Node node = listOfFiles.item(i);
+                    if (node.getNodeType() == Node.ELEMENT_NODE) {
+                        Element file = (Element) node;
+                        if(file.getAttribute("target-language") != null) {
+                            file.setAttribute("target-language", selectCsvColumnComboBox
+                                                                                    .getSelectionModel()
+                                                                                    .getSelectedItem()
+                                                                                    .toString());
+                        }
+                    }
+                }
+
                 NodeList listOfTransUnits = document.getElementsByTagName("trans-unit");
 
                 for (int i = 0; i < listOfTransUnits.getLength(); i++) {
 
                     Node node = listOfTransUnits.item(i);
-                    System.out.println(listOfTransUnits.item(i).getAttributes());
 
                     if (node.getNodeType() == Node.ELEMENT_NODE) {
                         Element transUnit = (Element) node;
@@ -217,7 +231,6 @@ public class CsvToXliffController implements Initializable {
                         } else {
                             Node targetNode = transUnit.getElementsByTagName("target").item(0);
                             targetNode.setTextContent(record.get(selectedColumn));
-//                            transUnit.insertBefore(targetNode, transUnit.getElementsByTagName("note").item(i));
                         }
                     }
                 }
@@ -228,15 +241,14 @@ public class CsvToXliffController implements Initializable {
                 StreamResult result = new StreamResult(newXliff);
                 transformer.transform(source, result);
 
-            } catch (ParserConfigurationException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (SAXException e) {
-                e.printStackTrace();
-            } catch (TransformerConfigurationException e) {
-                e.printStackTrace();
-            } catch (TransformerException e) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("");
+                alert.setHeaderText("Success!");
+                alert.setContentText("Your Xliff has been successfully created! " +
+                        "Remember to check that the target fields match the source fields!");
+                alert.showAndWait();
+
+            } catch (ParserConfigurationException | IOException | SAXException | TransformerException e) {
                 e.printStackTrace();
             }
         }

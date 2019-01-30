@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.walterjwhite.infrastructure</groupId>
+        <artifactId>dependencies</artifactId>
+        <version>0.0.15-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.walterjwhite.infrastructure.dependencies</groupId>
+    <artifactId>google-guice</artifactId>
+
+    <packaging>pom</packaging>
+
+    <name>google guice</name>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.google.inject/guice -->
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>${google.guice.version}</version>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>com.google.inject.extensions</groupId>-->
+            <!--<artifactId>guice-multibindings</artifactId>-->
+            <!--<version>${google.guice.version}</version>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>com.google.inject.integration</groupId>-->
+            <!--<artifactId>integration</artifactId>-->
+            <!--<version>1.0</version>-->
+        <!--</dependency>-->
+
+
+    </dependencies>
+
+    <properties>
+        <google.guice.version>4.1.0</google.guice.version>
+    </properties>
+</project>
